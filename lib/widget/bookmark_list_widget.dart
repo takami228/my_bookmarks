@@ -3,17 +3,17 @@ import 'package:mybookmarks/model/bookmark.dart';
 import 'package:mybookmarks/widget/bookmark_list_item_widget.dart';
 
 class BookmarksListWidget extends StatelessWidget {
-  List<Bookmark> bookmarkList;
+  final List<Bookmark> bookmarkList;
 
   BookmarksListWidget(this.bookmarkList);
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        BookmarkListItemWidget(bookmarkList[0]),
-        BookmarkListItemWidget(bookmarkList[1]),
-      ],
+    return ListView.builder(
+      itemCount: bookmarkList.length,
+      itemBuilder: (BuildContext context, int index) {
+        return BookmarkListItemWidget(bookmarkList[index]);
+      },
     );
   }
 }
